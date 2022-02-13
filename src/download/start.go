@@ -10,7 +10,7 @@ import (
 func Server() {
 	switch cmd.Type {
 	case "init":
-		misc.TODO("Initial")
+		Init()
 		Scripts()
 	case "update":
 		misc.TODO("Updating")
@@ -21,8 +21,8 @@ func Server() {
 
 func Scripts() {
 	if misc.CheckOS() == "win" {
-		misc.TODO("Script windows")
+		Win()
 	} else {
-		misc.TODO("Script unix (linux,macos)")
+		Unix()
 	}
 }
