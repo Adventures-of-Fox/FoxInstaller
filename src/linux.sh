@@ -59,12 +59,34 @@ color "\033[1;32m" "✓ Checking         - OK"
 echo
 
 #--- Downloading ---
-color "\033[1;33m" "🗘 Downloading      - (Start script,Server jar,Mods)"
-if ! curl -s 'https://www.hevhe.pl/'; then
+color "\033[1;33m" "🗘 Downloading      - (Version,Start script,Server jar,Mods)"
+
+#Version
+if ! curl -s 'https://raw.githubusercontent.com/Adventures-of-Fox/FoxInstaller/main/cdn/version' > ".version"; then
+    color "\033[1;31m" "    ✗ Version      - Error failed"
+    bad="Version"
+    color "\033[1;31m" "✗ Downloading      - Error in $bad"
+    exit 1
+else
+    color "\033[1;32m" "    ✓ Version      - OK"
+fi
+
+#Start script
+if ! curl -s 'https://raw.githubusercontent.com/Adventures-of-Fox/FoxInstaller/main/cdn/start-linux.sh' > "start.sh"; then
     color "\033[1;31m" "    ✗ Start script - Error failed"
     bad="Start script"
     color "\033[1;31m" "✗ Downloading      - Error in $bad"
     exit 1
 else
-    color "\033[1;32m" "    ✓ Start script     - OK"
+    color "\033[1;32m" "    ✓ Start script - OK"
+fi
+
+#Server jar
+if ! curl -s 'https://meta.fabricmc.net/v2/versions/loader/1.18.1/0.13.3/0.10.2/server/jar' > "server.jar"; then
+    color "\033[1;31m" "    ✗ Server jar   - Error failed"
+    bad="Server jar"
+    color "\033[1;31m" "✗ Downloading      - Error in $bad"
+    exit 1
+else
+    color "\033[1;32m" "    ✓ Server jar   - OK"
 fi

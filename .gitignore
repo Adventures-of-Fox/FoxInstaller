@@ -3,3 +3,6 @@ installer
 .*/
 *.zip
 server
+start.sh
+start.bat
+.*
