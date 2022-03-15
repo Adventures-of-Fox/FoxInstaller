@@ -13,4 +13,4 @@ RAM_MIN="6144"+"M"
 SERVER_FILE="server.jar"
 #---RAM---
 
-$(java -Xmx$RAM_MAX -Xms$RAM_MIN -jar $SERVER_FILE nogui)
+java -Xmx$RAM_MAX -Xms$RAM_MIN -jar $SERVER_FILE nogui
