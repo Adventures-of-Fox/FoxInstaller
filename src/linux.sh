@@ -18,7 +18,7 @@ color "\033[1;33m" "🗘 Checking         - (Tar,Curl,Java,Java version,Internet
 main="Checking        "
 
 #Check tar
-if [ -x "$(command -v tar)" ]; then
+if ! [ -x "$(command -v tar)" ]; then
     error "Tar         " "Java doesn't exist on your pc." "$main"
 else
     color "\033[1;32m" "    ✓ Tar          - OK"
