@@ -16,7 +16,7 @@ fi
 #---CONFIG---
 RAM_MAX="6144"+"M"
 RAM_MIN="6144"+"M"
-SERVER_FILE="server.jar"
+SERVER_FILE="fabric-server-launch.jar"
 #---RAM---
 
 java -Xmx$RAM_MAX -Xms$RAM_MIN -jar $SERVER_FILE nogui
