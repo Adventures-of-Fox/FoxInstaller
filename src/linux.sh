@@ -84,15 +84,15 @@ else
     color "\033[1;32m" "    ✓ Server jar   - OK"
 fi
 
-# Mods
-# if ! curl -s 'example.com' > "."; then
-#     color "\033[1;31m" "    ✗ Mods         - Error failed"
-#     bad="Server jar"
-#     color "\033[1;31m" "✗ Downloading      - Error in $bad"
-#     exit 1
-# else
-#     color "\033[1;32m" "    ✓ Mods         - OK"
-# fi
+#Mods
+if ! curl -s 'example.com' > "."; then
+    color "\033[1;31m" "    ✗ Mods         - Error failed"
+    bad="Server jar"
+    color "\033[1;31m" "✗ Downloading      - Error in $bad"
+    exit 1
+else
+    color "\033[1;32m" "    ✓ Mods         - OK"
+fi
 
 color "\033[1;32m" "✓ Checking      - OK"
 #--- Downloading ---
