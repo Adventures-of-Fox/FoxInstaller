@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 clear
-bad=none
 function color() {
     echo -e "$1$2\033[0m"
 }
@@ -85,31 +84,36 @@ else
 fi
 
 #Mods
-if ! curl -s 'example.com' > "."; then
-    color "\033[1;31m" "    ✗ Mods         - Error failed"
-    bad="Server jar"
-    color "\033[1;31m" "✗ Downloading      - Error in $bad"
-    exit 1
+if ! curl -s 'https://raw.githubusercontent.com/Adventures-of-Fox/FoxInstaller/main/cdn/test.tar.gz' >"server.tar.gz"; then
+    error "Mods        " "Error failed download" "$main"
 else
     color "\033[1;32m" "    ✓ Mods         - OK"
 fi
 
-color "\033[1;32m" "✓ Checking      - OK"
+color "\033[1;32m" "✓ Downloading      - OK"
 #--- Downloading ---
 
 echo
 
 #--- Preparing ---
 main="Preparing     "
-color "\033[1;33m" "🗘 Preparing      - (Downloading server files)"
+color "\033[1;33m" "🗘 Preparing      - (Server files,Extracting)"
 
 # Server files
 if ! java -jar installer_server.jar server -mcversion 1.18.1 -downloadMinecraft; then
-    error "\033[1;31m" "    ✗ Server files - Error failed" "$main"
+    error "Server files" "Downloading server files failed" "$main"
 else
     color "\033[1;32m" "    ✓ Server files - OK"
 fi
 rm installer_server.jar
+
+if ! tar -xvf server.tar.gz; then
+    error "Extracting  " "Error failed" "$main"
+else
+    color "\033[1;32m" "    ✓ Extracting   - OK"
+fi
+rm server.tar.gz
+
 
 color "\033[1;32m" "✓ Preparing      - OK"
 #--- Preparing ---
