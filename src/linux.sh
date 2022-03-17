@@ -84,7 +84,7 @@ else
 fi
 
 #Mods
-if ! curl -s 'https://raw.githubusercontent.com/Adventures-of-Fox/FoxInstaller/main/cdn/test.tar.gz' >"server.tar.gz"; then
+if ! curl -L -s 'https://github.com/Adventures-of-Fox/FoxInstaller/releases/download/test/server.tar.gz' -o server.tar.gz; then
     error "Mods        " "Error failed download" "$main"
 else
     color "\033[1;32m" "    ✓ Mods         - OK"
