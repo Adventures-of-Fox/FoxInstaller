@@ -97,25 +97,24 @@ echo
 
 #--- Preparing ---
 main="Preparing     "
-color "\033[1;33m" "🗘 Preparing      - (Server files,Extracting)"
+color "\033[1;33m" "🗘 Preparing        - (Server files,Extracting)"
 
 # Server files
-if ! java -jar installer_server.jar server -mcversion 1.18.1 -downloadMinecraft; then
+if ! java -jar installer_server.jar server -mcversion 1.18.1 -downloadMinecraft >/dev/null; then
     error "Server files" "Downloading server files failed" "$main"
 else
     color "\033[1;32m" "    ✓ Server files - OK"
 fi
 rm installer_server.jar
 
-if ! tar -xvf server.tar.gz; then
+if ! tar -xf server.tar.gz; then
     error "Extracting  " "Error failed" "$main"
 else
     color "\033[1;32m" "    ✓ Extracting   - OK"
 fi
 rm server.tar.gz
 
-
-color "\033[1;32m" "✓ Preparing      - OK"
+color "\033[1;32m" "✓ Preparing        - OK"
 #--- Preparing ---
 
 echo
